@@ -3,8 +3,42 @@ import Layout from "../layouts/Layout.astro";
 import Loading from "../components/Loading.astro";
 ---
 
-<Layout title="URL - Shortener">
-    <main class="min-h-screen max-w-7xl w-full flex justify-center flex-col mx-auto items-center gap-6">
+<script>
+    const path = window.location.pathname;
+    const urlShort = path.startsWith("/") ? path.slice(1) : path;
+
+    interface Response {
+        originalUrl: string;
+    }
+
+    const backendUrl = 'http://localhost:3001/api/v2/url/';
+
+    import { UrlApiAdapter } from "../api/urlApi.adapter";
+
+    const getUrl = async () => {
+        const urlApiAdapter = new UrlApiAdapter();
+        try {
+            const response: Response = await urlApiAdapter.get(
+                `${backendUrl + urlShort}`
+            );
+            if (!response) {
+                window.location.href = "/";
+                return;
+            }
+            window.location.href = response.originalUrl;
+        } catch (error) {
+            console.error(error);
+            window.location.href = "/";
+        }
+    };
+
+    getUrl();
+</script>
+
+<Layout title="Redirecting - Shortener">
+    <main
+        class="min-h-screen max-w-7xl w-full flex justify-center flex-col mx-auto items-center gap-6"
+    >
         <Loading />
         <h1 class="uppercase text-3xl font-semibold">Redirigiendo 😎</h1>
     </main>

@@ -1,0 +1,23 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer
+    class="footer footer-center bg-base-200 text-base-content rounded p-6"
+>
+    <nav class="grid grid-flow-col gap-4">
+        <a class="link link-hover" href="/">Shrtly</a>
+        <a class="link link-hover" href="/click-counter">Contador de clicks</a>
+        <a class="link link-hover" href="/"> Términos de servicio</a>
+        <a class="link link-hover" href="/">Privacidad</a>
+    </nav>
+    <aside>
+        <p class="text-accent">
+            Copyright © {year} - <span class="font-bold cursor-pointer"
+                ><a
+                    href="https://www.linkedin.com/in/alexisherrerac/"
+                    target="_blank">Alexis Herrera</a
+                ></span>
+        </p>
+    </aside>
+</footer>
