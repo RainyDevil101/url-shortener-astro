@@ -1,1 +1,1 @@
-export { backendUrl, baseUrl } from "./urls";
+export { backendUrl, baseUrl, backendUrlClicks } from "./urls";

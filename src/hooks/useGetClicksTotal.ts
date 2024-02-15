@@ -51,6 +51,9 @@ export const useGetClicksTotal = (backendUrl: string) => {
 
     const shortedUrl = match ? match[1] : null;
 
+    console.log(backendUrl + shortedUrl);
+    
+
     try {
       const urlApiAdapter = new UrlApiAdapter();
       const response: Response = await urlApiAdapter.get(backendUrl + shortedUrl);

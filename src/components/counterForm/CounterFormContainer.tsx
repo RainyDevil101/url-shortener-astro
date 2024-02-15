@@ -1,4 +1,4 @@
-import { backendUrl } from "../../api";
+import { backendUrlClicks } from "../../api";
 import { useGetClicksTotal } from "../../hooks/useGetClicksTotal";
 import { CounterForm } from "./CounterForm";
 
@@ -11,7 +11,7 @@ export const CounterFormContainer = () => {
         handleSubmit,
         isUrlValid,
         form,
-    } = useGetClicksTotal(backendUrl);
+    } = useGetClicksTotal(backendUrlClicks);
 
     return (
         <main class="min-h-screen max-w-7xl w-full mx-auto">
