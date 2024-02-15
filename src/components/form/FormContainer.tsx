@@ -16,7 +16,7 @@ export const FormContainer = () => {
     return (
         <main class="min-h-screen max-w-7xl w-full mx-auto">
             <Form
-                buttonText="Acortar"
+                buttonText="Acortar URL"
                 form={form}
                 isUrlValid={isUrlValid}
                 shortingUrl={shortingUrl}
