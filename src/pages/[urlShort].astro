@@ -11,22 +11,20 @@ import Loading from "../components/Loading.astro";
         originalUrl: string;
     }
 
-    const backendUrl = 'http://localhost:3001/api/v2/url/';
-
+    import { backendUrl } from "../api";
     import { UrlApiAdapter } from "../api/urlApi.adapter";
 
     const getUrl = async () => {
         const urlApiAdapter = new UrlApiAdapter();
         try {
             const response: Response = await urlApiAdapter.get(
-                `${backendUrl + urlShort}`
+                `${backendUrl + "/" + urlShort}`
             );
 
             if (!response) {
                 window.location.href = "/";
                 return;
             }
-
 
             window.location.href = response.originalUrl;
         } catch (error) {
