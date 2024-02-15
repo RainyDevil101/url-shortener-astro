@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
+// import node from '@astrojs/node';
 import tailwind from "@astrojs/tailwind";
 
 import preact from "@astrojs/preact";
@@ -8,7 +8,7 @@ import preact from "@astrojs/preact";
 export default defineConfig({
   integrations: [tailwind(), preact()],
   output: "server",
-  adapter: node({
-    mode: 'standalone'
-  }),
+  // adapter: node({
+  //   mode: 'standalone'
+  // }),
 });
