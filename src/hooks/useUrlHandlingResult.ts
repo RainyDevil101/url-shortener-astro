@@ -25,17 +25,18 @@ export const useUrlHandling = (baseUrl: string, backendUrl: string) => {
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
+
+    if (form.url.length === 0) return;
+
     setShortingUrl(true);
     setShortUrl("");
 
-    if (form.url.length === 0 || !isValidUrl(form.url)) {
+    if (!isValidUrl(form.url)) {
       setShortingUrl(false);
       setIsUrlValid(false);
       console.error("URL no válida");
       return;
     }
-
-    setIsUrlValid(true);
 
     try {
       const urlApiAdapter = new UrlApiAdapter();
@@ -45,29 +46,27 @@ export const useUrlHandling = (baseUrl: string, backendUrl: string) => {
       });
 
       setShortUrl(baseUrl + response.shortUrl);
+
       const shortedModal = document.getElementById("id_shorted");
 
       if (shortedModal instanceof HTMLDialogElement) {
         shortedModal.showModal();
-        setForm({
-          url: "",
-        });
       } else {
         console.error(
           "Elemento con ID 'id_shorted' no es un dialog HTML válido"
         );
-        setForm({
-          url: "",
-        });
       }
+
     } catch (error) {
       console.log(error);
+
+    } finally {
       setForm({
         url: "",
       });
+      setShortingUrl(false);
     }
 
-    setShortingUrl(false);
   };
 
   const isValidUrl = (url: string): boolean => {

@@ -21,10 +21,13 @@ import Loading from "../components/Loading.astro";
             const response: Response = await urlApiAdapter.get(
                 `${backendUrl + urlShort}`
             );
+
             if (!response) {
                 window.location.href = "/";
                 return;
             }
+
+
             window.location.href = response.originalUrl;
         } catch (error) {
             console.error(error);

@@ -15,7 +15,7 @@ export interface UrlHandlingResult extends UrlHandlingResultBase<BaseForm> {
 }
 
 export interface UrlHandlingResultClicks extends UrlHandlingResultBase<BaseForm> {
-  clicks: string;
+  clicks: number | null;
 }
 
 

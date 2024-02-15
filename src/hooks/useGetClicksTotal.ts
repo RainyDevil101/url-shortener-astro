@@ -1,6 +1,10 @@
 import { useState } from "preact/hooks";
 import { UrlApiAdapter } from "../api/urlApi.adapter";
 
+interface Response {
+  visitsCount: number;
+}
+
 export const useGetClicksTotal = (backendUrl: string) => {
 
   const [form, setForm] = useState({
@@ -8,7 +12,7 @@ export const useGetClicksTotal = (backendUrl: string) => {
   });
   const [isUrlValid, setIsUrlValid] = useState(true);
   const [gettingTotal, setGettingTotal] = useState(false);
-  const [clicks, setClicks] = useState("");
+  const [clicks, setClicks] = useState<number | null>(null);
 
   const handleInputChange = (e: Event) => {
     const { name, value } = e.target as HTMLInputElement;
@@ -24,11 +28,15 @@ export const useGetClicksTotal = (backendUrl: string) => {
   };
 
   const handleSubmit = async (e: Event) => {
-    e.preventDefault();
-    setGettingTotal(true);
-    setClicks("");
 
-    if (form.url.length === 0 || !isValidShortUrl(form.url)) {
+    e.preventDefault();
+
+    if (form.url.length === 0) return;
+
+    setGettingTotal(true);
+    setClicks(null);
+
+    if (!isValidShortUrl(form.url)) {
       setGettingTotal(false);
       setIsUrlValid(false);
       console.error("URL no válida");
@@ -37,13 +45,36 @@ export const useGetClicksTotal = (backendUrl: string) => {
 
     setIsUrlValid(true);
 
+    const url = form.url;
+
+    const match = url.match(/\/([^\/]+)$/);
+
+    const shortedUrl = match ? match[1] : null;
+
     try {
       const urlApiAdapter = new UrlApiAdapter();
-      const response: Response = await urlApiAdapter.get(backendUrl);
-      console.log(response);
-      
+      const response: Response = await urlApiAdapter.get(backendUrl + shortedUrl);
+
+      setClicks(response.visitsCount);
+      const modalClick = document.getElementById("id_shorted");
+
+      if (modalClick instanceof HTMLDialogElement) {
+        modalClick.showModal();
+      } else {
+        console.error(
+          "Elemento con ID 'id_shorted' no es un dialog HTML válido"
+        );
+      }
+
+      setGettingTotal(false);
     } catch (error) {
-      
+      setIsUrlValid(false);
+      setClicks(null);
+    } finally {
+      setGettingTotal(false);
+      setForm({
+        url: "",
+      });
     }
 
   };

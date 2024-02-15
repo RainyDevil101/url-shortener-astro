@@ -1,9 +1,8 @@
 import { useUrlHandling } from "../../hooks/useUrlHandlingResult";
+import { baseUrl, backendUrl } from "../../api";
 import { Form } from "./Form";
 
 export const FormContainer = () => {
-    const baseUrl = "http://localhost:4321/";
-    const backendUrl = "http://localhost:3001/api/v2/url";
 
     const {
         shortUrl,

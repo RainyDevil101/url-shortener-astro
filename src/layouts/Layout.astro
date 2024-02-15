@@ -1,5 +1,5 @@
 ---
-import Footer from '../components/Footer.astro';
+import Footer from "../components/Footer.astro";
 
 interface Props {
     title: string;
@@ -8,7 +8,13 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<!doctype html>
+<script>
+    import axios from "axios";
+    axios.get("https://url-shortener-dlcc.onrender.com/api/v2/auth/activate-clouster");
+    // axios.get("http://localhost:3001/api/v2/auth/activate-clouster");
+    
+</script>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -19,8 +25,14 @@ const { title } = Astro.props;
         <title>{title}</title>
     </head>
     <body>
+        <a
+            href="/"
+            class="text-center uppercase font-bold text-5xl fixed top-4 left-4 hidden md:block z-50"
+        >
+            <span class="text-accent">Shrt</span>ly
+        </a>
         <slot />
-        <Footer/>
+        <Footer />
     </body>
 </html>
 <style is:global>
@@ -45,5 +57,12 @@ const { title } = Astro.props;
 
     p {
         text-wrap: pretty;
+        line-height: 2.5rem;
+    }
+
+    li {
+        margin-top: 4px;
+        margin-bottom: 4px;
+        line-height: 2.5rem;
     }
 </style>

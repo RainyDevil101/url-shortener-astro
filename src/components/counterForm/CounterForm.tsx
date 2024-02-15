@@ -1,6 +1,7 @@
 import type { UrlHandlingResultClicks } from "../../interfaces/UrlHandlingResult.interface";
 import { Button } from "../form/Button";
 import { HandleInput } from "../form/HandleInput";
+import { ModalClicks } from "./ModalClicks";
 
 interface FormProps extends UrlHandlingResultClicks {
     buttonText: string;
@@ -30,6 +31,7 @@ export const CounterForm: React.FC<FormProps> = ({
 
                 <Button buttonText={buttonText} shortingUrl={shortingUrl} />
             </form>
+            <ModalClicks clicks={clicks} />
         </div>
     );
 };

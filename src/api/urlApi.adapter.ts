@@ -1,4 +1,4 @@
-import axios, { AxiosError, type AxiosResponse } from 'axios';
+import axios, { type AxiosResponse } from 'axios';
 
 export interface HttpAdapter {
 
@@ -46,8 +46,6 @@ export class UrlApiAdapter implements HttpAdapter {
       const { data }: AxiosResponse<T> = await this.axios.get(url);
       return data;
     } catch (error: any) {
-
-      if (error.response.data.message) return error.response.data.message;
       console.error('Error in Axios adapter:', error);
       throw error;
     }

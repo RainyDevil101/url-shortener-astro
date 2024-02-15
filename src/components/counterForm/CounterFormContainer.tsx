@@ -1,8 +1,8 @@
+import { backendUrl } from "../../api";
 import { useGetClicksTotal } from "../../hooks/useGetClicksTotal";
 import { CounterForm } from "./CounterForm";
 
 export const CounterFormContainer = () => {
-    const backendUrl = "http://localhost:3001/api/v2/url";
 
     const {
         clicks,
