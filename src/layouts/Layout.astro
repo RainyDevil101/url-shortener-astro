@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import Footer from "../components/Footer.astro";
 
 interface Props {
@@ -17,24 +18,23 @@ const { title, description } = Astro.props;
     // axios.get("http://localhost:3001/api/v2/auth/activate-clouster");
 </script>
 
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <meta name="description" content="Astro description" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="description" content={description} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta
             property="og:image"
             content="https://shrt-url-ah.netlify.app/img/landing-page.png"
         />
-        <meta
-            property="og:url"
-            content="https://shrt-url-ah.netlify.app"
-        />
-        <meta property="og:type" content="web page" />
+        <meta property="og:url" content="https://shrt-url-ah.netlify.app" />
+        <meta property="og:type" content="website" />
         <meta name="author" content="Alexis Herrera Carreño" />
+        <title>{title}</title>
+        <ViewTransitions/>
     </head>
     <body>
         <a
