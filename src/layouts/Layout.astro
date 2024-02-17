@@ -3,16 +3,18 @@ import Footer from "../components/Footer.astro";
 
 interface Props {
     title: string;
+    description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <script>
     import axios from "axios";
-    axios.get("https://url-shortener-dlcc.onrender.com/api/v2/auth/activate-clouster");
+    axios.get(
+        "https://url-shortener-dlcc.onrender.com/api/v2/auth/activate-clouster"
+    );
     // axios.get("http://localhost:3001/api/v2/auth/activate-clouster");
-    
 </script>
 
 <html lang="en">
@@ -21,8 +23,18 @@ const { title } = Astro.props;
         <meta name="description" content="Astro description" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta
+            property="og:image"
+            content="https://shrt-url-ah.netlify.app/img/landing-page.png"
+        />
+        <meta
+            property="og:url"
+            content="https://shrt-url-ah.netlify.app"
+        />
+        <meta property="og:type" content="web page" />
+        <meta name="author" content="Alexis Herrera Carreño" />
     </head>
     <body>
         <a
