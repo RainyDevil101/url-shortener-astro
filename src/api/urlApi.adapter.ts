@@ -1,10 +1,8 @@
 import axios, { type AxiosResponse } from 'axios';
 
 export interface HttpAdapter {
-
   post<T>(url: string, data: any): Promise<T>;
   get<T>(url: string): Promise<T>;
-
 }
 
 // export class UrlApiFetchAdapter implements HttpAdapter {
@@ -26,11 +24,9 @@ export interface HttpAdapter {
 // }
 
 export class UrlApiAdapter implements HttpAdapter {
-
   private readonly axios = axios;
 
   async post<T>(url: string, data: any): Promise<T> {
-
     try {
       const response: AxiosResponse<T> = await this.axios.post(url, data);
       return response.data;
@@ -38,7 +34,6 @@ export class UrlApiAdapter implements HttpAdapter {
       console.error('Error in Axios adapter:', error);
       throw error;
     }
-
   }
 
   async get<T>(url: string): Promise<T> {
@@ -50,5 +45,4 @@ export class UrlApiAdapter implements HttpAdapter {
       throw error;
     }
   }
-
-};
+}
