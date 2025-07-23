@@ -7,7 +7,7 @@ export const Button: React.FC<Button> = ({ shortingUrl, buttonText }) => {
     return (
         <button
             disabled={shortingUrl}
-            class="btn btn-accent w-full md:w-auto max-w-xl mt-5 md:mt-0"
+            class="btn btn-accent w-full max-w-xl"
             type="submit"
         >
             {buttonText}

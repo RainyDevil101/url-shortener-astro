@@ -17,11 +17,11 @@ export const Form: React.FC<FormProps> = ({
     shortUrl,
 }) => {
     return (
-        <div className="rounded-lg flex w-full mx-auto min-h-screen gap-4">
+        <div className="rounded-lg flex w-full mx-auto gap-4">
             <form
                 onSubmit={handleSubmit}
                 method="POST"
-                className="flex flex-col md:flex-row w-full mx-auto justify-center gap-4 my-auto items-center p-4"
+                className="flex flex-col w-full mx-auto justify-center gap-4 items-center p-4"
             >
                 <HandleInput
                     isUrlValid={isUrlValid}
