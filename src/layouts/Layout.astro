@@ -1,80 +1,80 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-import Footer from "../components/Footer.astro";
+import { ViewTransitions } from 'astro:transitions';
+import Footer from '../components/Footer.astro';
 
 interface Props {
-    title: string;
-    description: string;
+  title: string;
+  description: string;
 }
 
 const { title, description } = Astro.props;
 ---
 
 <script>
-    import axios from "axios";
-    axios.get(
-        "https://url-shortener-dlcc.onrender.com/api/v2/auth/activate-clouster"
-    );
-    // axios.get("http://localhost:3001/api/v2/auth/activate-clouster");
+  import axios from 'axios';
+  axios.get(
+    'https://url-shortener-dlcc.onrender.com/api/v2/auth/activate-clouster'
+  );
+  // axios.get("http://localhost:3001/api/v2/auth/activate-clouster");
 </script>
 
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="description" content={description} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta
-            property="og:image"
-            content="https://shrt-url-ah.netlify.app/img/landing-page.png"
-        />
-        <meta property="og:url" content="https://shrt-url-ah.netlify.app" />
-        <meta property="og:type" content="website" />
-        <meta name="author" content="Alexis Herrera Carreño" />
-        <title>{title}</title>
-        <ViewTransitions/>
-    </head>
-    <body>
-        <a
-            href="/"
-            class="text-center uppercase font-bold text-5xl fixed top-4 left-4 hidden md:block z-50"
-        >
-            <span class="text-accent">Shrt</span>ly
-        </a>
-        <slot />
-        <Footer />
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta
+      property="og:image"
+      content="https://shrt-url-ah.netlify.app/img/landing-page.png"
+    />
+    <meta property="og:url" content="https://shrt-url-ah.netlify.app" />
+    <meta property="og:type" content="website" />
+    <meta name="author" content="Alexis Herrera Carreño" />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body>
+    <a
+      href="/"
+      class="text-center uppercase font-bold text-5xl fixed top-4 z-50 md:left-4 left-1/2 transform md:transform-none -translate-x-1/2"
+    >
+      <span class="text-accent">Shrt</span>ly
+    </a>
+    <slot />
+    <Footer />
+  </body>
 </html>
 <style is:global>
-    * {
-        box-sizing: border-box;
-        position: relative;
-        min-width: 0;
-    }
+  * {
+    box-sizing: border-box;
+    position: relative;
+    min-width: 0;
+  }
 
-    body {
-        min-height: 100dvh;
-        background-color: rgb(23, 19, 50);
-        color: white;
-    }
+  body {
+    min-height: 100dvh;
+    background-color: rgb(23, 19, 50);
+    color: white;
+  }
 
-    h1,
-    h2,
-    h3,
-    h4 {
-        text-wrap: balance;
-    }
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
 
-    p {
-        text-wrap: pretty;
-        line-height: 2.5rem;
-    }
+  p {
+    text-wrap: pretty;
+    line-height: 2.5rem;
+  }
 
-    li {
-        margin-top: 4px;
-        margin-bottom: 4px;
-        line-height: 2.5rem;
-    }
+  li {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    line-height: 2.5rem;
+  }
 </style>
